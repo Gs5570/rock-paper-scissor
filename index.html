@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor Game</title>
+    <link rel="stylesheet" type="text/css" href="./style/index.css" />
+    <script defer src="./index.js"></script>
+
+</head>
+
+<body>
+    <div class="body-container">
+        <div class="header-container">
+            <div class="nav-bar">
+                <h1>Rock - Paper - Scissor</h1>
+            </div>
+        </div>
+        <div class="content-container">
+            <div class="computer-container">
+                <h2 class="userClick">Computer</h2>
+                <img class="icon-img" src="./media/computer-icon.png" />
+                <p>Computer Picked:<span: id="computer-choice"></span:>
+                </p>
+
+                <p>Win:<span id="computer-win"> </span> </p>
+
+                <p>Lose:<span id="computer-lose"> </span> </p>
+            </div>
+            <div class="versus-container">
+                <p>VS</p>
+                <p>Winner: <span id="winner"> </span>
+                </p>
+            </div>
+            <div class="player-container">
+                <h2>Player</h2>
+                <img class="icon-img" src="./media/user-icon.png" />
+                <div class="button-container">
+                    <button onclick="userSelection(this.value)" class="playerClick " value="0">&#128074</button>
+                    <button onclick="userSelection(this.value)" class="playerClick " value="1">&#128075</button>
+                    <button onclick="userSelection(this.value)" class="playerClick " value="2">&#9996</button>
+                </div>
+
+                <p>Player picked: <span id="player-choice"></span></p>
+
+                <p>Win:<span id="player-win"> </span></p>
+
+                <p>Lose:<span id="player-lose"></span></p>
+            </div>
+
+        </div>
+        <div class="footer-container">Made by Galekwan Sango</div>
+    </div>
+
+</body>
+
+</html>
