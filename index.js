@@ -38,19 +38,21 @@ let computerWin = document.getElementById('computer-win'); //computer win paragr
 let computerLose = document.getElementById('computer-lose'); // computer loses paragraph
 
 let winner = document.getElementById('winner');
+let timer = 2000;
 
 /**
- *this function generate random to
+ *this function generate random to pick between choices for rock, paper, scissor
  * @returns random Number from 0 to 2
  */
-function randomNumGenerator() {
+function generateRandomNumber() {
   return Math.floor(Math.random() * (maxNum - minNum) + minNum);
 }
 
 /**
  * winning, set count for wins and lost
  * @param {*} computerPick computer choice between rock, paper, scissor
- * @param {*} userPick player choice rock, paper, scissor   */
+ * @param {*} userPick player choice rock, paper, scissor
+ *  */
 function winning(computerPick, userPick) {
   console.log(computerPick);
   console.log(userPick);
@@ -66,11 +68,6 @@ function winning(computerPick, userPick) {
   } else if (computerPick === 'scissor' && userPick === 'paper') {
     computerWin.textContent = ` ${(computerWinCount = computerWinCount + 1)}`;
     playerLose.textContent = ` ${(playerLoseCount = playerLoseCount + 1)}`;
-
-    // playerWin.textContent = ` ${(playerWinCount = playerWinCount + 1)}`;
-    // computerLose.textContent = ` ${(computerLoseCount =
-    //   computerLoseCount + 1)}`;
-    // alert('user win');
   } else if (userPick === 'paper' && computerPick == 'rock') {
     playerWin.textContent = ` ${(playerWinCount = playerWinCount + 1)}`;
     computerLose.textContent = ` ${(computerLoseCount =
@@ -131,7 +128,7 @@ function resetGame(computerCount, playerCount) {
     winner.textContent = 'Computer';
     setTimeout(() => {
       clearFields();
-    }, '2000');
+    }, timer);
 
     // clearFields();
   } else if (playerCount >= numberOfRound) {
@@ -139,7 +136,7 @@ function resetGame(computerCount, playerCount) {
     winner.textContent = 'Player!!! 🎊 🎊 🎊';
     setTimeout(() => {
       clearFields();
-    }, '2000');
+    }, timer);
   }
 }
 
@@ -180,7 +177,7 @@ function rollComputerChoice(randomNum) {
  */
 function userSelection(btnValue) {
   btnDefaultValue = btnValue;
-  let randomComputerNumber = randomNumGenerator();
+  let randomComputerNumber = generateRandomNumber();
   let computerEmoji;
   let playerEmoji;
 
