@@ -85,7 +85,7 @@ window.onclick = (event) => {
 };
 
 /**
- *this function generate random to pick between choices for rock, paper, scissor
+ *this function generate random # to pick between choices for rock, paper, scissor
  * @returns random Number from 0 to 2
  */
 function generateRandomNumber() {
