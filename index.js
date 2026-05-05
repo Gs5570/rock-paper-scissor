@@ -1,3 +1,5 @@
+//variables and objects declaration
+let counterArr;
 let rock = {
   name: 'rock',
   num: 0,
@@ -20,6 +22,11 @@ let maxNum = 3;
 let clicked = false;
 let numberOfRound = 5;
 
+let startBtn = document.getElementById('start-btn');
+let resetBtn = document.getElementById('reset-btn');
+const modal = document.getElementById('quickViewModal'); // modal preview element
+const closeBtn = document.querySelector('.close-btn'); // close button;
+
 let btnDefaultValue;
 let randomComputerValue; // capture random choice from computer
 let defaultPlayerChoice; // capture default choice from user
@@ -38,7 +45,44 @@ let computerWin = document.getElementById('computer-win'); //computer win paragr
 let computerLose = document.getElementById('computer-lose'); // computer loses paragraph
 
 let winner = document.getElementById('winner');
-let timer = 2000;
+let timer = 4000;
+
+// functions declaration
+
+/**
+ * makes the start button to start the game disappear on click
+ * @param {*} isClicked - argument to verifies if the button was clicked
+ */
+function hideStartBtn(isClicked) {
+  if (isClicked) {
+    startBtn.style.display = 'none';
+  }
+}
+
+function showModalPreview(isClicked) {
+  if (isClicked) {
+    modal.style.display = 'block';
+  }
+}
+
+// show modal preview and hide start button
+startBtn.addEventListener('click', (event) => {
+  const isClickedInside = startBtn.contains(event.target);
+  hideStartBtn(isClickedInside);
+  showModalPreview(isClickedInside);
+});
+
+resetBtn.addEventListener('click', () => {
+  clearFields();
+});
+
+//  Close the modal when clicking (x)
+closeBtn.onclick = () => (modal.style.display = 'none');
+
+// Close the modal if clicking outside the white box
+window.onclick = (event) => {
+  if (event.target == modal) modal.style.display = 'none';
+};
 
 /**
  *this function generate random to pick between choices for rock, paper, scissor
@@ -50,8 +94,8 @@ function generateRandomNumber() {
 
 /**
  * winning, set count for wins and lost
- * @param {*} computerPick computer choice between rock, paper, scissor
- * @param {*} userPick player choice rock, paper, scissor
+ * @param {*} computerPick -  computer choice between rock, paper, scissor
+ * @param {*} userPick - player choice rock, paper, scissor
  *  */
 function winning(computerPick, userPick) {
   console.log(computerPick);
@@ -184,13 +228,13 @@ function userSelection(btnValue) {
   //computer
   randomComputerValue = rollComputerChoice(randomComputerNumber);
   computerChoice.textContent += ` ${(computerEmoji = generateEmoji(
-    rollComputerChoice(randomComputerNumber)
+    rollComputerChoice(randomComputerNumber),
   ))}`;
 
   //user
   defaultPlayerChoice = generateChoice(Number(btnDefaultValue));
   playerChoice.textContent += ` ${(playerEmoji = generateEmoji(
-    generateChoice(Number(btnDefaultValue))
+    generateChoice(Number(btnDefaultValue)),
   ))}`;
   //   rollUserChoice(btnDefaultValue);
 
